@@ -6,4 +6,5 @@ It uses the MightyHID Library by twatorowski (https://github.com/MightyDevices/M
 I'm not planning to change anything concerning this project, since it works fine for me. I just wanted to give other people a headstart when trying to accomplish this.
 
 Have fun!
+
 crazyklatsch
