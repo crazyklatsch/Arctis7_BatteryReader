@@ -8,6 +8,7 @@ I made all icons myself, so no copyright or smth. If you want to change them, I 
 
 I put this program into my autostart and it's a real enrichment to using the headset :)
 I'm not planning to change anything concerning this project, since it works fine for me. I just wanted to give other people a headstart when trying to accomplish this.
+
 I'm not affiliated with Steelseries in any way and did this as a hobby project.
 
 Have fun!
