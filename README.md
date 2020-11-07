@@ -1,7 +1,7 @@
 # Arctis7_BatteryReader
 A battery reader for the Steelseries Arctis7 Wireless Headset. It polls the percentage and displayes it as a tray icon.
 
-It uses the MightyHID Library by twatorowski (https://github.com/MightyDevices/MightyHID). You will have to download and build it and then set this projects Assembly reference to the built 'MightyHID.dll'. Another Assembly reference I had to set manually was to 'System.Windows.Forms' and 'System.Configuration.ConfigurationManager'.
+It uses the MightyHID Library by twatorowski (https://github.com/MightyDevices/MightyHID). You will have to download and build it and then set this projects Assembly reference to the built 'MightyHID.dll'. Other Assembly references I had to set manually were 'System.Windows.Forms' and 'System.Configuration.ConfigurationManager'.
 After Building the project the Headset_Battery_Icons folder (unzipped) has to be in the same folder as the executable (SteelSeries_Arctis7_BatteryReader.exe).
 
 I made all icons myself, so no copyright or smth. If you want to change them, I included the .xcf-file (Gimp 2: i always first exported to png and then only that png to icon).
