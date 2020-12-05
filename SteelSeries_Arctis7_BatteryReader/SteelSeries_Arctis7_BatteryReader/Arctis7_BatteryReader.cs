@@ -139,9 +139,19 @@ namespace SteelSeries_Arctis7_BatteryReader
 
             this.icon = new NotifyIcon();
             this.icon.Text = "Arctis 7 Battery Reader";
-            ContextMenu trayMenu = new ContextMenu();
-            trayMenu.MenuItems.Add("Exit", exit_program);
-            this.icon.ContextMenu = trayMenu;
+            
+            // When the target is >= .NETcore 3.1
+            ContextMenuStrip trayMenu = new ContextMenuStrip();
+            ToolStripMenuItem exitItem = new ToolStripMenuItem();
+            exitItem.Text = "Exit";
+            exitItem.Click += new System.EventHandler(exit_program);
+            trayMenu.Items.Add(exitItem);
+            this.icon.ContextMenuStrip = trayMenu;
+            
+            // When the target is <= .NETcore 3.0 
+            //ContextMenu trayMenu = new ContextMenu();
+            //trayMenu.MenuItems.Add("Exit", exit_program);
+            //this.icon.ContextMenu = trayMenu;
 
             this.icon.Icon = this.chargeIcons[0];
 
