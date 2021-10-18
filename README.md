@@ -14,7 +14,7 @@ Additionally, the Headset_Battery_Icons folder (unzipped) has to be in the same 
 I made all icons myself, so no copyright or smth. If you want to change them, I included the .xcf-file (Gimp 2: i always first exported to png and then only that png to icon).
 
 I put this program into my autostart and it's a real enrichment to using the headset :)
-I'm not planning to change anything concerning this project, since it works fine for me. I just wanted to give other people a headstart when trying to accomplish this.
+I'm not planning to change anything concerning this project, since it works fine for me but i'm open to ideas. I just wanted to give other people a headstart when trying to accomplish this.
 
 I'm not affiliated with Steelseries in any way and did this as a hobby project.
 
