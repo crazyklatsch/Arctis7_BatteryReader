@@ -8,7 +8,7 @@ After building, the necessary files (including the .exe) can then be found in "S
 
 Additionally, the Headset_Battery_Icons folder (unzipped) has to be in the same folder as the executable (SteelSeries_Arctis7_BatteryReader.exe).
 
-(Then i copied all contents of the 'netcoreapp3.1' folder including the Headset_Battery_Icons folder into a folder in my Programs folder)
+(Then i copied all contents of the 'netcoreapp3.1' folder including the Headset_Battery_Icons folder into a folder in my Programs)
 
 
 I made all icons myself, so no copyright or smth. If you want to change them, I included the .xcf-file (Gimp 2: i always first exported to png and then only that png to icon).
