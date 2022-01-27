@@ -36,8 +36,9 @@ namespace SteelSeries_Arctis7_BatteryReader
     class Arctis7_BatteryReader
     {
         public static bool exit = false;
+        public static bool refresh = false;
 
-        public const byte batteryAdress = 0x18; //->Battery(0 - 100)
+        public const byte batteryAddress = 0x18; //->Battery(0 - 100)
         //public const byte muteStatus = 0x30; //->Mute status(0-Not muted, 1-Muted)
 
         private NotifyIcon icon;
@@ -84,8 +85,12 @@ namespace SteelSeries_Arctis7_BatteryReader
             byte batteryCharge = 0;
             this.ReadBattery(out batteryCharge);
 
+
             //Update Tray Icon
-            this.icon.Icon = this.chargeIcons[batteryCharge];
+            if (batteryCharge >= 0 && batteryCharge <= 100)
+            {
+                this.icon.Icon = this.chargeIcons[batteryCharge];
+            }
         }
 
         private bool ReadBattery(out byte batteryCharge)
@@ -95,18 +100,18 @@ namespace SteelSeries_Arctis7_BatteryReader
             {
                 // Set message to send
                 byte[] report = new byte[32]; report[0] = 0x06;
-                report[1] = batteryAdress;
+                report[1] = batteryAddress;
 
                 // Send request
                 this.dev.Write(report);
 
                 // Prepare buffer for answer
-                byte[] reportIn = new byte[31]; //neeed 31 (by testing)
+                byte[] reportIn = new byte[31]; //need 31 (by testing)
 
                 // Read answer
                 this.dev.Read(reportIn);
 
-                if (reportIn[0] == 0x06 && reportIn[1] == report[1])
+                if (reportIn[0] == 0x06 && reportIn[1] == batteryAddress)
                 {
                     batteryCharge = reportIn[2];
                     return true;
@@ -139,19 +144,10 @@ namespace SteelSeries_Arctis7_BatteryReader
 
             this.icon = new NotifyIcon();
             this.icon.Text = "Arctis 7 Battery Reader";
-            
-            // When the target is >= .NETcore 3.1
-            ContextMenuStrip trayMenu = new ContextMenuStrip();
-            ToolStripMenuItem exitItem = new ToolStripMenuItem();
-            exitItem.Text = "Exit";
-            exitItem.Click += new System.EventHandler(exit_program);
-            trayMenu.Items.Add(exitItem);
-            this.icon.ContextMenuStrip = trayMenu;
-            
-            // When the target is <= .NETcore 3.0 
-            //ContextMenu trayMenu = new ContextMenu();
-            //trayMenu.MenuItems.Add("Exit", exit_program);
-            //this.icon.ContextMenu = trayMenu;
+            ContextMenu trayMenu = new ContextMenu();
+            trayMenu.MenuItems.Add("Refresh", refresh_tray_icon);
+            trayMenu.MenuItems.Add("Exit", exit_program);
+            this.icon.ContextMenu = trayMenu;
 
             this.icon.Icon = this.chargeIcons[0];
 
@@ -161,7 +157,8 @@ namespace SteelSeries_Arctis7_BatteryReader
 
         private void InitHIDDev()
         {
-            byte devnumber = 0;
+            int devnumber = 0;
+            
             this.dev = null;
 
             var devices = HIDBrowse.Browse();
@@ -173,13 +170,15 @@ namespace SteelSeries_Arctis7_BatteryReader
             if (devs.Count != 0)
             {
                 byte batCharge = 0;
-                do
+                for(devnumber = 0; devnumber < devs.Count; devnumber++)
                 {
                     this.dev = new HIDDev();
                     dev.Open(devs.ElementAt(devnumber));
-                    devnumber++;
-
-                } while (devnumber < devs.Count && !this.ReadBattery(out batCharge));
+                    if(this.ReadBattery(out batCharge))
+                    {
+                        break;
+                    }
+                }
 
                 if(devnumber >= devs.Count)
                 {
@@ -206,6 +205,12 @@ namespace SteelSeries_Arctis7_BatteryReader
         {
             Application.Exit();
             exit = true;
+        }
+
+        private void refresh_tray_icon(object sender, EventArgs e)
+        {
+            this.InitHIDDev();
+            //this.OnUpdate(null, null);
         }
 
     }

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "48296242-2fc4-4128-9f87-7b6626139c16": {
+      "ProjectGuid": "48296242-2fc4-4128-9f87-7b6626139c16",
+      "DisplayName": "SteelSeries_Arctis7_BatteryReader",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
