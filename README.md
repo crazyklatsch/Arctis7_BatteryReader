@@ -9,6 +9,7 @@ I included a build manual (Arctis7_BatteryReader_Build_Manual.pdf). If you follo
 I made all icons myself, so no copyright or smth. If you want to change them, I included the .xcf-file (Gimp 2: i always first exported to png and then only that png to icon).
 
 I put this program into my autostart and it's a real enrichment to using the headset :)
+
 I'm open for ideas to improve this project.
 
 I'm not affiliated with Steelseries in any way and did this as a hobby project.
