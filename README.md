@@ -1,3 +1,5 @@
+This project is reimplemented in rust and provided with a windows installer in https://github.com/crazyklatsch/Arctis7_BatteryReader_rs
+
 # Arctis7_BatteryReader
 A battery reader for the Steelseries Arctis7 Wireless Headset. It polls the percentage every 5 seconds and displayes it as a tray icon.
 
